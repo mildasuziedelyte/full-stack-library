@@ -1,0 +1,228 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: rgb(210, 207, 202);
+    // background-color: #ffffff;
+}
+
+body,
+body * {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+    font-family:'Lora', sans-serif;
+    font-family:'Open sans', sans-serif;
+    /* font-family:'Nunito', sans-serif; */
+    color: black;
+    font-weight: 400;
+}
+
+.logo{
+    font-size: 25px;
+    letter-spacing: 5px; 
+    font-weight: 500;
+}
+
+.dropdown-menu{
+    border: none;
+}
+
+.dropdown-menu-right{
+    top:48px;
+}
+
+.navbar-light .navbar-toggler {
+    border:none;
+}
+
+.card-header h1{
+    font-size: 20px;
+    text-align: center;
+}
+
+.filter-title{
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.order {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    // justify-content: space-between;
+    // background-color: lightcoral;
+}
+
+.order-text{
+    font-size: 13px;
+    margin-right: 8px;
+}
+
+.order-form{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    // background-color: lightgreen;
+}
+
+select{
+    height: 25px;
+    width: 250px;
+    // white-space:pre-wrap;
+}
+
+@media(max-width: 480px){
+    select{
+        width: 180px;
+    }  
+}
+
+@media(max-width: 400px){
+    select{
+        width: 130px;
+    }  
+}
+
+.button{
+    padding: 4px 10px;
+    height: 25px;
+    font-size: 12px;
+    // border-radius: 20px;
+    background-color:rgb(210, 207, 202);
+    // margin-left: 10px;
+}
+
+.button:hover{
+    background-color:white;
+}
+
+.button-filter{
+    padding: 2px 5px;
+    height: 25px;
+    font-size: 12px;
+    // border-radius: 20px;
+    background-color:rgb(210, 207, 202);
+    margin-left: 8px;
+}
+
+.button-filter:hover{
+    background-color:white;
+}
+
+.button-edit{
+    background-color:white;
+    color:#699e74;
+    border: 1px solid #699e74;
+}
+
+.button-edit:hover{
+    background-color: #699e74;
+    color: white;
+}
+
+.button-delete{
+    background-color:white;
+    color:#e63329;
+    border: 1px solid #e63329;
+}
+
+.button-delete:hover{
+    background-color: #e63329;
+    color: white;
+}
+
+
+.list-group-item {
+    &__line {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        position: relative;
+        span {
+            font-size: 16px;
+            margin-top: 6px;
+        }
+        &__buttons {
+            display: flex;
+            .btn {
+                margin: 7px;
+            }
+        }
+    }
+}
+
+.list-group-item{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.button-big{
+    background-color:rgb(210, 207, 202);
+}
+
+.button-big:hover{
+    background-color:#9bc5a4;
+}
+
+.delete-button{
+    position:absolute;
+    right: 7px;
+    top: 40px;
+}
+
+.badge-secondary {
+    background-color: #b9b9b9;
+    // color: black;
+}
+
+.badge {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.book-item{
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-size: 14px;
+}
+
+.book-item:first-child{
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    // border-top: none;
+}
+.book-item:last-child{
+    border-bottom: none;
+}
+
+
+.form-check-input.custom {
+    margin-left: 15px;
+    margin-top: 6px;
+}
+
+.form-check.custom {
+    padding-left: 0px;
+}
+
+.btn-sm, .btn-group-sm > .btn {
+    font-size: 0.6rem;
+}
+
+.card-text{
+    font-size: 14px;
+}
+
+.list-group-item-danger{
+    padding: 5px;
+}
+
+.dropdown-menu a:active{
+    // background-color: #7ec1d3;
+    background-color: #d0736b;
+  }
+
+  .pad{
+      padding-bottom: 25px;
+  }

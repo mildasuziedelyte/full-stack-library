@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Authors List
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+
+				<div class="card">
+
+					<div class="card-header">
+						<h1>Authors in the Library</h1>
+					</div>
+
+					<div class="card-body">
+
+						{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+							<div class="row justify-content-center">
+								<div class="form-group">
+									<a class="btn btn-light button" href="{{path('author_create')}}">Add new author</a>
+								</div>
+							</div>
+						{% endif %}
+
+						{# TIKRINU AR YRA SARASE AUTORIU #}
+						{% if authors|length <= 0 %}
+							<div class="row justify-content-center">
+								<div class="form-group">
+									<h6>There are no Authors in the library.</h6>
+								</div>
+							</div>
+						{% else %}
+
+							{# SORTINIMAS #}
+							<div class="form-group filter-title">
+								Order by:
+							</div>
+							<div
+								class="order form-group">
+								{# <span class="order-text">Order by:</span> #}
+								<div class="order-select">
+									<form action="{{path('author_index')}}" method="GET" class="order-form">
+										<select name="sort" class="order-select">
+											{# <option value="default">default</option> #}
+											{# <option value="name_az" {% if sortBy == 'name_az' %} selected {% endif %}>name a-ž</option>
+											<option value="name_za" {% if sortBy == 'name_za' %} selected {% endif %}>name ž-a</option> #}
+											<option value="surname_az" {% if sortBy == 'surname_az' %} selected {% endif %}>surname a-z</option>
+											<option value="surname_za" {% if sortBy == 'surname_za' %} selected {% endif %}>surname z-a</option>
+										</select>
+										<button class="btn btn-light button button-filter" type="submit">Sort</button>
+										<a class="btn btn-light button button-filter" href="{{path('author_index')}}">Clear</a>
+									</form>
+								</div>
+							</div>
+
+							{# AUTORIU SARASAS #}
+
+							<ul class="list-group">
+								{% for author in authors %}
+									{# vienas autorius #}
+									<li class="list-group-item">
+
+										<div class="list-group-item__line">
+											<span class="author-name">
+												<h5>
+													{{author.name}}
+													{{author.surname}}
+												</h5>
+											</span>
+											{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+												<div class="list-group-item__line__buttons">
+													<a class="btn btn-light button button-edit" href="{{ path('author_edit', {id:author.id}) }}">Edit</a>
+												</div>
+												<form class="delete-button" action="{{path('author_delete', {id: author.id})}}" method="POST">
+													<button class="btn btn-light button button-delete" type="submit">
+														Delete
+													</button>
+													<input type="hidden" name="token" value="{{ csrf_token('token') }}"/>
+												</form>
+											{% endif %}
+										</div>
+
+										{% if author.books|length > 0 %}
+											<h5>
+												<span class="badge badge-secondary">Author books:</span>
+											</h5>
+											<ul class="list-group">
+												{% for book in author.books %}
+													<li class="list-group-item book-item">
+														{{book.title}}</li>
+												{% endfor %}
+											</ul>
+
+										{% else %}
+											<h5>
+												<span class="badge badge-secondary">Author books:</span>
+											</h5>
+											<ul class="list-group">
+													<li style="color:#505050;" class="list-group-item book-item">There are no books by this author in the library.</li>
+											</ul>
+										{% endif %}
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
